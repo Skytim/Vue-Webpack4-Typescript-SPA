@@ -1,17 +1,19 @@
 <b-container class="content">
-  <b-row>
-    <b-col class="content">
-      <h1>
-        <strong>Thank you
-          <span class="text-primary package">{{package}}</span>
-        </strong>
-      </h1>
-      <p>This project is running in
-        <strong class="mode">{{mode}} mode</strong>
-      </p>
-      <p>Make sure to follow the project on
-        <a :href="repo">GitHub</a> to stay up to date with the latest releases, or contribute to the project by opening an issue or making
-        a pull-request!</p>
-    </b-col>
-  </b-row>
+  <b-alert show variant="primary">
+    <b-row>
+      <b-col cols="1"> Counter:
+        <b-form-select v-model="selected" :options="options" class="mb-3" />
+      </b-col>
+      <b-col cols="1"> Draw No:
+        <b-form-input v-model="text1" type="text" placeholder=""></b-form-input>
+      </b-col>
+    </b-row>
+  </b-alert>
+  <b-table striped hover :items="items" :fields="fields">
+    <b-row class="text-center" slot="name" slot-scope="row">
+      <b-col cols="12">
+        {{row.value.first}} {{row.value.last}}
+      </b-col>
+    </b-row>
+  </b-table>
 </b-container>

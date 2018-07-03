@@ -23,6 +23,10 @@ webpackConfig.module.rules = [
   {
     test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
     loader: "file-loader"
+  },
+  {
+    test: /\.css$/,
+    loader:[ 'style-loader', 'css-loader' ]
   }
 ];
 
