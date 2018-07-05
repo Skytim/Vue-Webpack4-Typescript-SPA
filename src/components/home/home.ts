@@ -1,10 +1,10 @@
 import { Component, Vue } from 'vue-property-decorator'
 import './home.scss'
-// import SettlementLog from './SettlementLog/SettlementLog.vue'
+import SettlementLog from './SettlementLog/SettlementLog.vue'
 @Component({
   template: require('./home.html'),
   components: {
-    // 'SettlementLog': SettlementLog
+    'SettlementLog': SettlementLog
   }
   // }
 })

@@ -8,7 +8,7 @@
 </el-dialog>
 </template>
 
-<script lang="ts" src="./SettlementLog.ts">
+<script lang="ts" >
 import { Component, Vue, Watch } from 'vue-property-decorator'
 
 @Component
