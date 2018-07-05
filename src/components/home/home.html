@@ -1,19 +1,76 @@
-<b-container class="content">
-  <b-alert show variant="primary">
-    <b-row>
-      <b-col cols="1"> Counter:
-        <b-form-select v-model="selected" :options="options" class="mb-3" />
-      </b-col>
-      <b-col cols="1"> Draw No:
-        <b-form-input v-model="text1" type="text" placeholder=""></b-form-input>
-      </b-col>
-    </b-row>
-  </b-alert>
-  <b-table striped hover :items="items" :fields="fields">
-    <b-row class="text-center" slot="name" slot-scope="row">
-      <b-col cols="12">
-        {{row.value.first}} {{row.value.last}}
-      </b-col>
-    </b-row>
-  </b-table>
-</b-container>
+<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" :inline="true">
+  <el-form-item label="Counter" prop="region">
+    <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+      <el-option label="区域一" value="shanghai"></el-option>
+      <el-option label="区域二" value="beijing"></el-option>
+    </el-select>
+  </el-form-item>
+  <el-form-item label="Draw No" prop="name">
+    <el-input v-model="ruleForm.name"></el-input>
+  </el-form-item>
+  <el-form-item label="活动时间" required>
+    <el-col :span="10">
+      <el-form-item prop="date1">
+        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+      </el-form-item>
+    </el-col>
+    <el-col class="line" :span="2">-</el-col>
+    <el-col :span="10">
+      <el-form-item prop="date2">
+        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
+      </el-form-item>
+    </el-col>
+  </el-form-item>
+  <el-form-item>
+    <el-button @click="resetForm('ruleForm')" type="primary">Search</el-button>
+  </el-form-item>
+  <el-table :data="tableData2" style="width: 100%">
+    <el-table-column prop="no" label="No" width="50">
+    </el-table-column>
+    <el-table-column label="Server Draw Date Time" width="110">
+      <template slot-scope="scope">
+        <span style="margin-left: 10px">{{ scope.row.server_draw_date_day }}</span>
+        <br>
+        <span style="margin-left: 10px">{{ scope.row.server_draw_date_time }}</span>
+      </template>
+    </el-table-column>
+    <el-table-column label="Official Date Time" width="110">
+      <template slot-scope="scope">
+        <span style="margin-left: 10px">{{ scope.row.official_date_day }}</span>
+        <br>
+        <span style="margin-left: 10px">{{ scope.row.official_date_time }}</span>
+      </template>
+    </el-table-column>
+    <el-table-column prop="counter" label="Counter" width="80">
+    </el-table-column>
+    <el-table-column prop="draw_no" label="Draw No." width="110">
+    </el-table-column>
+    <el-table-column label="Results" width="1000">
+      <template slot-scope="scope">
+        <span style="margin-left: 10px" v-if="!scope.row.results">Ready for resulting</span>
+        <br>
+      </template>
+
+    </el-table-column>
+    <el-table-column prop="result_status" label="Result Status" width="110">
+    </el-table-column>
+    <el-table-column label="Settlement">
+      <template slot-scope="scope">
+        <span style="margin-left: 10px" v-if="scope.row.settlement" @click="showSettleLog">Log</span>
+      </template>
+    </el-table-column>
+  </el-table>
+
+  <el-dialog
+  title="提示"
+  :visible.sync="dialogVisible"
+  width="30%"
+  :before-close="handleClose">
+  <span>这是一段信息</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+</el-dialog>
+
+</el-form>

@@ -28,10 +28,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.11",
+    "element-ui": "^2.4.3",
     "vue": "^2.5.16",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0",
-    "vue-router": "~3.0.1"
+    "vue-router": "~3.0.1",
+    "vuetify": "^1.1.1"
   },
   "devDependencies": {
     "@types/mocha": "~2.2.47",

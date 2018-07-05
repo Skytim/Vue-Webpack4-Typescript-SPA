@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import { makeHot, reload } from './util/hot-reload'
 import { createRouter } from './router'
-
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(Element)
 const navbarComponent = () => import('./components/navbar').then(({ NavbarComponent }) => NavbarComponent)
 const homeComponent = () => import('./components/home').then(({ HomeComponent }) => HomeComponent)
 // const navbarComponent = () => import(/* webpackChunkName: 'navbar' */'./components/navbar').then(({ NavbarComponent }) => NavbarComponent)
-
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import './sass/main.scss'
+
 
 if (process.env.ENV === 'development' && module.hot) {
   const navbarModuleId = './components/navbar'
