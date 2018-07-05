@@ -1,8 +1,12 @@
 import { Component, Vue } from 'vue-property-decorator'
 import './home.scss'
+const SettlementLog = () => import('./SettlementLog').then(({ SettlementLogComponent }) => SettlementLogComponent)
 
 @Component({
-  template: require('./home.html')
+  template: require('./home.html'),
+  components: {
+    'settlementLog': SettlementLog
+  }
   // }
 })
 export class HomeComponent extends Vue {
@@ -96,7 +100,7 @@ export class HomeComponent extends Vue {
     settlement: false
   }]
   dialogVisible: boolean = false
-
+  dialogTableVisible: boolean = false
   showSettleLog () {
     this.dialogVisible = true
   }
