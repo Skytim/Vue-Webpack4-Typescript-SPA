@@ -27,4 +27,8 @@ export class SettlementLogComponent extends Vue {
   closeDialog () {
     this.$emit('dialogTableVisible',false)
   }
+  close () {
+    this.$emit('close')
+    this.$emit('dialogTableVisible',false)
+  }
 }
