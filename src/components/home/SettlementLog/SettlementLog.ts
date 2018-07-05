@@ -1,8 +1,8 @@
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 
 @Component({
   template: require('./SettlementLog.html'),
-  props: ['dialogTableVisible']
+  props: ['dialogVisible']
   // }
 })
 export class SettlementLogComponent extends Vue {
@@ -24,11 +24,17 @@ export class SettlementLogComponent extends Vue {
     address: '上海市普陀区金沙江路 1518 弄'
   }]
 
-  closeDialog () {
-    this.$emit('dialogTableVisible',false)
+  visible: Boolean = false
+  @Watch('visible')
+  visibleChanged (val, oldVal) {
+    if (val === false) {
+      this.$emit('close')
+    }
   }
-  close () {
-    this.$emit('close')
-    this.$emit('dialogTableVisible',false)
+  @Watch('$props')
+  propsChanged (val, oldVal) {
+    if (this.visible !== val) {
+      this.visible = val
+    }
   }
 }

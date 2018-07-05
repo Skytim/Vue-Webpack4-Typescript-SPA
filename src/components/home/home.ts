@@ -1,11 +1,11 @@
 import { Component, Vue } from 'vue-property-decorator'
 import './home.scss'
-const SettlementLog = () => import('./SettlementLog').then(({ SettlementLogComponent }) => SettlementLogComponent)
+const SettlementLogComponent = () => import('./SettlementLog').then(({ SettlementLogComponent }) => SettlementLogComponent)
 
 @Component({
   template: require('./home.html'),
   components: {
-    'settlementLog': SettlementLog
+    'settlementLog': SettlementLogComponent
   }
   // }
 })

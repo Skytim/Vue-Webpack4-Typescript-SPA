@@ -56,8 +56,8 @@
     </el-table-column>
     <el-table-column label="Settlement">
       <template slot-scope="scope">
-        <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>
-        <settlementLog :dialogTableVisible="dialogTableVisible"></settlementLog>
+        <el-button type="text" @click="dialogVisible  = true">打开嵌套表格的 Dialog</el-button>
+        <settlementLog  :dialog-visible="dialogVisible"></settlementLog>
       </template>
     </el-table-column>
   </el-table>
